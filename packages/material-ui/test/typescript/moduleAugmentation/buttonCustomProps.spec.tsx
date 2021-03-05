@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, PaletteColor, PaletteColorOptions } from '@material-ui/core/styles';
 
 // Update the Button's extendable props options
 declare module '@material-ui/core/Button' {
@@ -8,15 +8,34 @@ declare module '@material-ui/core/Button' {
     dashed: true;
   }
   interface ButtonPropsColorOverrides {
-    success: true;
+    forbiddenPalette: false;
   }
   interface ButtonPropsSizeOverrides {
     extraLarge: true;
   }
 }
 
+declare module '@material-ui/core/styles' {
+  interface Palette {
+    customPalette: PaletteColor;
+    forbiddenPalette: PaletteColor;
+  }
+  interface PaletteOptions {
+    customPalette?: PaletteColorOptions;
+    forbiddenPalette?: PaletteColorOptions;
+  }
+}
+
 // theme typings should work as expected
 const theme = createMuiTheme({
+  palette: {
+    customPalette: {
+      main: '#000000',
+    },
+    forbiddenPalette: {
+      main: '#000000',
+    },
+  },
   components: {
     MuiButton: {
       variants: [
@@ -37,6 +56,10 @@ const theme = createMuiTheme({
   },
 });
 
-<Button variant="dashed" color="success" size="extraLarge">
+<Button variant="dashed" color="customPalette" size="extraLarge">
+  Custom
+</Button>;
+// @ts-expect-error forbidden palette used
+<Button color="forbiddenPalette">
   Custom
 </Button>;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { OverridableStringUnion } from '@material-ui/types';
 import { SxProps } from '@material-ui/system';
-import { Theme } from '../styles';
+import { PaletteColorKeys, Theme } from '../styles';
 import { ExtendButtonBase, ExtendButtonBaseTypeMap } from '../ButtonBase';
 import { OverrideProps, OverridableComponent, OverridableTypeMap } from '../OverridableComponent';
 
@@ -101,10 +101,7 @@ export type ButtonTypeMap<
      * The color of the component. It supports those theme colors that make sense for this component.
      * @default 'primary'
      */
-    color?: OverridableStringUnion<
-      Record<'inherit' | 'primary' | 'secondary', true>,
-      ButtonPropsColorOverrides
-    >;
+    color?: OverridableStringUnion<Record<PaletteColorKeys, true>, ButtonPropsColorOverrides>;
     /**
      * If `true`, the component is disabled.
      * @default false
