@@ -12,6 +12,7 @@ export { default as adaptV4Theme, DeprecatedThemeOptions } from './adaptV4Theme'
 export {
   Palette,
   PaletteColor,
+  PaletteColorKeys,
   PaletteColorOptions,
   PaletteOptions,
   SimplePaletteColorOptions,

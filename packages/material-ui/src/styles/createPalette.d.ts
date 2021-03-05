@@ -119,4 +119,6 @@ export interface PaletteOptions {
   getContrastText?: (background: string) => string;
 }
 
+export type PaletteColorKeys = keyof Pick<Palette, { [P in keyof Palette]: Palette[P] extends PaletteColor ? P : never }[keyof Palette]>;
+
 export default function createPalette(palette: PaletteOptions): Palette;
